@@ -3,7 +3,7 @@
   <Resource auth="Container"
             driverClassName="com.mysql.cj.jdbc.Driver"
             name="jdbc/studentdb"
-            password="****"
+            password="zxzx"
             type="javax.sql.DataSource"
             url="jdbc:mysql://127.0.0.1:3306/studentdb"
             username="root">
