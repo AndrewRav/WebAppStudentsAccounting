@@ -22,3 +22,34 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Игнорировать сгенерированные файлы NetBeans
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbactions.xml
+/nb-configuration.xml
+
+# Игнорировать сгенерированные файлы Maven
+/target/
+
+# Игнорировать временные файлы
+*.log
+*.swp
+
+# Игнорировать файлы конфигурации IDE
+.idea/
+
+# Игнорировать файлы журнала
+logs/
+
+# Игнорировать зависимости Maven
+/.repository/
+
+# Игнорировать временные файлы JSP
+*.jsp~*
+
+# Игнорировать файлы сессии Tomcat (если используется)
+work/
+
