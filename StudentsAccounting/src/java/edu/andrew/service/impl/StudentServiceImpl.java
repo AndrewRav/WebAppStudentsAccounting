@@ -1,5 +1,6 @@
 package edu.andrew.service.impl;
 
+import edu.andrew.dao.Dao;
 import edu.andrew.model.Student;
 import edu.andrew.service.Service;
 import java.util.Set;
@@ -9,7 +10,12 @@ import java.util.Set;
  * @author Andrew
  */
 public class StudentServiceImpl implements Service<Student> {
+    Dao studentDao;
 
+    public StudentServiceImpl(Dao studentDao) {
+        this.studentDao = studentDao;
+    }
+    
     @Override
     public boolean create(Student student) {
         throw new UnsupportedOperationException("Not supported yet.");
