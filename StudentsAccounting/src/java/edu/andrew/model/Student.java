@@ -7,12 +7,12 @@ import java.util.Objects;
  * @author Andrew
  */
 public class Student {
-    private int id, user_id, course;
+    private int id, userId, course;
     private String lastName, firstName, middleName, phoneNumber, birthDate, group, faculty;
 
-    public Student(int id, int user_id, String lastName, String firstName, String middleName, String birthDate, String phoneNumber, String faculty, int course, String group) {
+    public Student(int id, int userId, String lastName, String firstName, String middleName, String birthDate, String phoneNumber, String faculty, int course, String group) {
         this.id = id;
-        this.user_id = user_id;
+        this.userId = userId;
         this.course = course;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -31,12 +31,12 @@ public class Student {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getCourse() {
@@ -127,6 +127,6 @@ public class Student {
     
     @Override
     public String toString() {
-        return "Student{" + "id=" + id + ", user_id=" + user_id + ", course=" + course + ", lastName=" + lastName + ", firstName=" + firstName + ", middleName=" + middleName + ", phoneNumber=" + phoneNumber + ", birthDate=" + birthDate + ", group=" + group + ", faculty=" + faculty + '}';
+        return "Student{" + "id=" + id + ", userId=" + userId + ", course=" + course + ", lastName=" + lastName + ", firstName=" + firstName + ", middleName=" + middleName + ", phoneNumber=" + phoneNumber + ", birthDate=" + birthDate + ", group=" + group + ", faculty=" + faculty + '}';
     }
 }
