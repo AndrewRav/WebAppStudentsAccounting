@@ -1,5 +1,7 @@
 package edu.andrew.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author Andrew
@@ -100,6 +102,28 @@ public class Student {
     public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        return this.id == other.id;
+    }
+    
+    
     
     @Override
     public String toString() {
