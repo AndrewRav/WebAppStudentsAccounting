@@ -8,13 +8,13 @@ import java.util.Objects;
  */
 public class User {
     private int id;
-    private String login, password, lasName, firstName, middleName, email, status;
+    private String login, password, lastName, firstName, middleName, email, status;
     
-    public User(int id, String login, String password, String lasName, String firstName, String middleName, String email, String status) {
+    public User(int id, String login, String password, String lastName, String firstName, String middleName, String email, String status) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.lasName = lasName;
+        this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
         this.email = email;
@@ -45,12 +45,12 @@ public class User {
         this.password = password;
     }
 
-    public String getLasName() {
-        return lasName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLasName(String lasName) {
-        this.lasName = lasName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
@@ -109,6 +109,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", login=" + login + ", password=" + password + ", lasName=" + lasName + ", firstName=" + firstName + ", middleName=" + middleName + ", email=" + email + ", status=" + status + '}';
+        return "User{" + "id=" + id + ", login=" + login + ", password=" + password + ", lasName=" + lastName + ", firstName=" + firstName + ", middleName=" + middleName + ", email=" + email + ", status=" + status + '}';
     }
 }
