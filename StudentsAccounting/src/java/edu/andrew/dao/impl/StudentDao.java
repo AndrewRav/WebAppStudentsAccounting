@@ -48,7 +48,7 @@ public class StudentDao implements Dao<Student> {
                     if (rs.next()) { // Если результат имеет хотя бы 1 запись
                         id = rs.getInt("id"); // Берём id свежесозданной строчки 
                     } else {
-                        throw new SQLException("Creating user failed, no ID obtained.");
+                        throw new SQLException("Creating user failed, no ID obtained");
                     }
                 }
             }
@@ -62,17 +62,25 @@ public class StudentDao implements Dao<Student> {
     @Override
     public Set<Student> read() {
         String req = "Select * from student";
-        Set<Student> groups;
+        Set<Student> students;
         try (Connection conn = dataSource.getConnection()) {            
             try (Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(req)) {
-                groups = new HashSet<>();
+                students = new HashSet<>();
                 while (rs.next()) { // Пока есть записи 
                     int id = rs.getInt("id");
-                    String name = rs.getString("name");
-                    groups.add(new Student(id, name));
+                    int userId = rs.getInt("userId");
+                    String lastName = rs.getString("lastName");
+                    String firstName = rs.getString("firstName");
+                    String middleName = rs.getString("middleName");
+                    String birthDate = rs.getString("birthDate");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String faculty = rs.getString("faculty");
+                    int course = rs.getInt("course");
+                    String groupName = rs.getString("groupName");
+                    students.add(new Student(id, userId, lastName, firstName, middleName, birthDate, phoneNumber, faculty, course, groupName));
                 }
             }
-            return groups;
+            return students;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -82,11 +90,19 @@ public class StudentDao implements Dao<Student> {
     @Override
     public int update(Student student) {
         try (Connection conn = dataSource.getConnection()) {
-            String query = "update student set name=? where id=? ";
-            try (PreparedStatement ps = conn.prepareStatement(query)) {
-                ps.setString(1, student.getFirstName());
-                ps.setInt(2, student.getId());
-                return ps.executeUpdate();
+            String query = "UPDATE students SET user_id = ?, last_name = ?, first_name = ?, middle_name = ?, birth_date = ?, tel_number = ?, faculty = ?, course = ?, groupName = ? WHERE id = ?";
+            try (PreparedStatement pst = conn.prepareStatement(query)) {
+                pst.setInt(1, student.getUserId());
+                pst.setString(2, student.getLastName());
+                pst.setString(3, student.getFirstName());
+                pst.setString(4, student.getMiddleName());
+                pst.setString(5, student.getBirthDate());
+                pst.setString(6, student.getPhoneNumber());
+                pst.setString(7, student.getFaculty());
+                pst.setInt(8, student.getCourse());
+                pst.setString(9, student.getGroup());
+                pst.setInt(10, student.getId());
+                return pst.executeUpdate();
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -97,7 +113,7 @@ public class StudentDao implements Dao<Student> {
     @Override
     public int delete(Student student) {
         try (Connection conn = dataSource.getConnection()) {            
-            String query = "delete from student where id = ?";
+            String query = "DELETE FROM students WHERE id = ?";
             try (PreparedStatement preparedStmt = conn.prepareStatement(query)) {
                 preparedStmt.setInt(1, student.getId());
                 int res = preparedStmt.executeUpdate();
