@@ -69,9 +69,9 @@ public class UserDao implements Dao<User> {
                     int id = rs.getInt("id");
                     String login = rs.getString("login");
                     String password = rs.getString("password");
-                    String lastName = rs.getString("lastName");
-                    String firstName = rs.getString("firstName");
-                    String middleName = rs.getString("middleName");
+                    String lastName = rs.getString("last_name");
+                    String firstName = rs.getString("first_name");
+                    String middleName = rs.getString("middle_name");
                     String email = rs.getString("email");
                     String status = rs.getString("status");
                     users.add(new User(id, login, password, lastName, firstName, middleName, email, status));

@@ -21,6 +21,13 @@ public class User {
         this.status = status;
     }
 
+    public User(int id) {
+        this.id = id;
+    }
+
+    public User() {
+    }
+
     public int getId() {
         return id;
     }

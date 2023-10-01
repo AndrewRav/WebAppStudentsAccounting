@@ -18,22 +18,31 @@ public class UserServiceImpl implements Service<User> {
     
     @Override
     public boolean create(User user) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return userDao.create(user) > 0;
     }
 
     @Override
-    public Set read() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Set<User> read() {
+        return userDao.read();
     }
 
     @Override
-    public boolean update(int id, String newName) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean update(int id, String newLogin, String newPassword, String newLastName, String newFirstName, String newMiddleName, String newEmail, String newStatus) {
+        User user = new User(id);
+    	user.setLogin(newLogin);
+        user.setPassword(newPassword);
+        user.setLastName(newLastName);
+        user.setFirstName(newFirstName);
+        user.setMiddleName(newMiddleName);
+        user.setEmail(newEmail);
+        user.setStatus(newStatus);
+        return userDao.update(user) > 0;
     }
 
     @Override
     public boolean delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        User user = new User(id);
+        return userDao.delete(user) > 0;
     }
 
     @Override

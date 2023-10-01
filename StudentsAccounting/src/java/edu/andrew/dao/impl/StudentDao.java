@@ -61,19 +61,19 @@ public class StudentDao implements Dao<Student> {
 
     @Override
     public Set<Student> read() {
-        String req = "Select * from student";
+        String req = "SELECT * from student";
         Set<Student> students;
         try (Connection conn = dataSource.getConnection()) {            
             try (Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(req)) {
                 students = new HashSet<>();
                 while (rs.next()) { // Пока есть записи 
                     int id = rs.getInt("id");
-                    int userId = rs.getInt("userId");
-                    String lastName = rs.getString("lastName");
-                    String firstName = rs.getString("firstName");
-                    String middleName = rs.getString("middleName");
-                    String birthDate = rs.getString("birthDate");
-                    String phoneNumber = rs.getString("phoneNumber");
+                    int userId = rs.getInt("user_id");
+                    String lastName = rs.getString("last_name");
+                    String firstName = rs.getString("first_name");
+                    String middleName = rs.getString("middle_name");
+                    String birthDate = rs.getString("birth_date");
+                    String phoneNumber = rs.getString("tel_number");
                     String faculty = rs.getString("faculty");
                     int course = rs.getInt("course");
                     String groupName = rs.getString("groupName");

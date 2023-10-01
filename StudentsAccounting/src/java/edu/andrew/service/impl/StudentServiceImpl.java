@@ -22,7 +22,7 @@ public class StudentServiceImpl implements Service<Student> {
     }
 
     @Override
-    public Set read() {
+    public Set<Student> read() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -23,6 +23,13 @@ public class Student {
         this.faculty = faculty;
     }
 
+    public Student(int id) {
+        this.id = id;
+    }
+
+    public Student() {
+    }
+
     public int getId() {
         return id;
     }
