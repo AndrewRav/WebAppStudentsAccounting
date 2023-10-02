@@ -2,14 +2,14 @@ package edu.andrew.service.impl;
 
 import edu.andrew.dao.Dao;
 import edu.andrew.model.User;
-import edu.andrew.service.Service;
 import java.util.Set;
+import edu.andrew.service.UserService;
 
 /**
  *
  * @author Andrew
  */
-public class UserServiceImpl implements Service<User> {
+public class UserServiceImpl implements UserService {
     Dao userDao;
 
     public UserServiceImpl(Dao userDao) {

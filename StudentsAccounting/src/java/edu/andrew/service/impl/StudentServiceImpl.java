@@ -2,14 +2,15 @@ package edu.andrew.service.impl;
 
 import edu.andrew.dao.Dao;
 import edu.andrew.model.Student;
-import edu.andrew.service.Service;
+import edu.andrew.model.User;
+import edu.andrew.service.StudentService;
 import java.util.Set;
 
 /**
  *
  * @author Andrew
  */
-public class StudentServiceImpl implements Service<Student> {
+public class StudentServiceImpl implements StudentService {
     Dao studentDao;
 
     public StudentServiceImpl(Dao studentDao) {
@@ -18,22 +19,34 @@ public class StudentServiceImpl implements Service<Student> {
     
     @Override
     public boolean create(Student student) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return studentDao.create(student) > 0;
     }
 
     @Override
     public Set<Student> read() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return studentDao.read();
     }
 
     @Override
-    public boolean update(int id, String newName) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean update(int id, int newUserId, String newLastName, String newFirstName, String newMiddleName, String newBirthDate, String newPhoneNumber, String newFaculty, int newCourse, String newGroup) {
+        Student student = new Student(id);
+        student.setUserId(newUserId);
+        student.setLastName(newLastName);
+        student.setFirstName(newFirstName);
+        student.setMiddleName(newMiddleName);
+        student.setBirthDate(newBirthDate);
+        student.setPhoneNumber(newPhoneNumber);
+        student.setFaculty(newFaculty);
+        student.setCourse(newCourse);
+        student.setCourse(newCourse);
+        student.setGroup(newGroup);
+        return studentDao.update(student) > 0;
     }
 
     @Override
     public boolean delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Student student = new Student(id);
+        return studentDao.delete(student) > 0;
     }
 
     @Override
