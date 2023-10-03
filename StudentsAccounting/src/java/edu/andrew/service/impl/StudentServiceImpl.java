@@ -38,7 +38,6 @@ public class StudentServiceImpl implements StudentService {
         student.setPhoneNumber(newPhoneNumber);
         student.setFaculty(newFaculty);
         student.setCourse(newCourse);
-        student.setCourse(newCourse);
         student.setGroup(newGroup);
         return studentDao.update(student) > 0;
     }
