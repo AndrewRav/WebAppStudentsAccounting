@@ -1,25 +1,28 @@
 package edu.andrew.controller.students;
 
+import edu.andrew.controller.InitServlet;
 import edu.andrew.controller.Jumpable;
-import edu.andrew.model.Student;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import edu.andrew.controller.InitServlet;
 
 /**
  *
  * @author Andrew
  */
-@WebServlet(name = "CreateStudentServlet", urlPatterns = {"/createStudent"})
-public class CreateStudentServlet extends InitServlet implements Jumpable {
+@WebServlet(name = "UpdateStudentServlet", urlPatterns = {"/UpdateStudentServlet"})
+public class UpdateStudentServlet extends InitServlet implements Jumpable {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        jump("/WEB-INF/jsp/createStudent.jsp", request, response);
+        String id = request.getParameter("id");
+        request.getSession(true).setAttribute("id", id);
+        jump("/WEB-INF/jsp/update.jsp", request, response);
     }
 
     @Override
@@ -36,20 +39,11 @@ public class CreateStudentServlet extends InitServlet implements Jumpable {
         String stringCourse = request.getParameter("course");
         int course = Integer.parseInt(stringCourse);
         String groupName = request.getParameter("groupName");
-
-        Student student = new Student(); // mapping таблицы в объект 
-        student.setUserId(userID);
-        student.setLastName(lastName);
-        student.setFirstName(firstName);
-        student.setMiddleName(middleName);
-        student.setBirthDate(birthDate);
-        student.setPhoneNumber(phoneNumber);
-        student.setFaculty(faculty);
-        student.setCourse(course);
-        student.setGroup(groupName);
-        boolean success = studentService.create(student);
-        request.setAttribute("success", success ? "Данные добавлены" : "Данные не добавлены");
+        
+        String stringStudentID = (String) request.getSession().getAttribute("id");
+        int id = Integer.parseInt(stringStudentID);
+        boolean success = studentService.update(id, userID, lastName, firstName, middleName, birthDate, phoneNumber, faculty, course, groupName);
+        request.setAttribute("success", success ? "Данные обновлены" : "Данные не обновлены");
         jump("/WEB-INF/jsp/result.jsp", request, response);
     }
-
 }
