@@ -4,13 +4,15 @@ import edu.andrew.dao.Dao;
 import edu.andrew.model.User;
 import java.util.Set;
 import edu.andrew.service.UserService;
+import static java.util.stream.Collectors.toSet;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author Andrew
  */
 public class UserServiceImpl implements UserService {
-    Dao userDao;
+    Dao<User> userDao;
 
     public UserServiceImpl(Dao userDao) {
         this.userDao = userDao;
@@ -47,7 +49,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return userDao.read().stream().filter(user -> id == user.getId())
+                .collect(toSet()).iterator().next();
     }
     
 }

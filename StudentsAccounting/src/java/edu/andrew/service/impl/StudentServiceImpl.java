@@ -5,13 +5,14 @@ import edu.andrew.model.Student;
 import edu.andrew.model.User;
 import edu.andrew.service.StudentService;
 import java.util.Set;
+import static java.util.stream.Collectors.toSet;
 
 /**
  *
  * @author Andrew
  */
 public class StudentServiceImpl implements StudentService {
-    Dao studentDao;
+    Dao<Student> studentDao;
 
     public StudentServiceImpl(Dao studentDao) {
         this.studentDao = studentDao;
@@ -50,7 +51,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return studentDao.read().stream().filter(student -> id == student.getId())
+                .collect(toSet()).iterator().next();
     }
     
 }
