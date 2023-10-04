@@ -1,4 +1,4 @@
-package edu.andrew.controller.students;
+package edu.andrew.controller.users;
 
 import edu.andrew.controller.InitServlet;
 import edu.andrew.controller.Jumpable;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andrew
  */
-@WebServlet(name = "UpdateStudentServlet", urlPatterns = {"/updateStudent"})
-public class UpdateStudentServlet extends InitServlet implements Jumpable {
-
+@WebServlet(name = "UpdateUserServlet", urlPatterns = {"/updateUser"})
+public class UpdateUserServlet extends InitServlet implements Jumpable {
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -26,21 +26,17 @@ public class UpdateStudentServlet extends InitServlet implements Jumpable {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String stringUserID = request.getParameter("userID");
-        int userID = Integer.parseInt(stringUserID);
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
         String lastName = request.getParameter("lastName");
         String firstName = request.getParameter("firstName");
         String middleName = request.getParameter("middleName");
-        String birthDate = request.getParameter("birthDate");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String faculty = request.getParameter("faculty");
-        String stringCourse = request.getParameter("course");
-        int course = Integer.parseInt(stringCourse);
-        String groupName = request.getParameter("groupName");
+        String email = request.getParameter("email");
+        String status = request.getParameter("status");
         
-        String stringStudentID = (String) request.getSession().getAttribute("id");
-        int id = Integer.parseInt(stringStudentID);
-        boolean success = studentService.update(id, userID, lastName, firstName, middleName, birthDate, phoneNumber, faculty, course, groupName);
+        String stringUserID = (String) request.getSession().getAttribute("id");
+        int id = Integer.parseInt(stringUserID);
+        boolean success = userService.update(id, login, password, lastName, firstName, middleName, email, status);
         request.setAttribute("success", success ? "Данные обновлены" : "Данные не обновлены");
         jump("/WEB-INF/jsp/result.jsp", request, response);
     }
