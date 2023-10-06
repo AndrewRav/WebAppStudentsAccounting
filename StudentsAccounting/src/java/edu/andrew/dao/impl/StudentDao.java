@@ -61,7 +61,7 @@ public class StudentDao implements Dao<Student> {
 
     @Override
     public Set<Student> read() {
-        String req = "SELECT * from student";
+        String req = "SELECT * from students";
         Set<Student> students;
         try (Connection conn = dataSource.getConnection()) {            
             try (Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(req)) {

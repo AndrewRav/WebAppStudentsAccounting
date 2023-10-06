@@ -22,7 +22,7 @@ public class ReadStudentServlet extends InitServlet implements Jumpable {
             throws ServletException, IOException {
         Set<Student> student = studentService.read();
         request.setAttribute("student", student);
-        jump("/WEB-INF/jsp/show.jsp", request, response);
+        jump("/WEB-INF/jsp/info.jsp", request, response);
     }
     
 }
