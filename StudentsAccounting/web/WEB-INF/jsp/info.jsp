@@ -15,7 +15,7 @@
         <div class="header">
             <span class="header-title">Список всех студентов</span>
             <form>
-                <a href="/WEB-INF/jsp/welcome.jsp" class="header-link">Назад</a>
+                <a href="index.html" class="header-link">Назад</a>
             </form>
         </div>
         <table>
