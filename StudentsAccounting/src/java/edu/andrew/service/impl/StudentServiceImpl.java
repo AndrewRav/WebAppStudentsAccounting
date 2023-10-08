@@ -55,4 +55,34 @@ public class StudentServiceImpl implements StudentService {
                 .collect(toSet()).iterator().next();
     }
     
+    @Override
+    public Set<Student> getByFaculty(String faculty) {
+        return studentDao.read().stream().filter(student -> faculty.equals(student.getFaculty()))
+                .collect(toSet());
+    }
+    
+    @Override
+    public Set<Student> getByBirthDate(String birthDate) {
+//        Student student = new Student();
+//        String[] splitBirthDate = student.getBirthDate().split("-");
+//        String year = splitBirthDate[0];
+//        String month = splitBirthDate[1];
+//        String day = splitBirthDate[2];
+            // Дата хранится в формате yy-mm-dd, поэтому использую первый элемент для фильтрации по году
+        return studentDao.read().stream().filter(student -> birthDate.equals(student.getBirthDate().split("-")[0]))
+                .collect(toSet());
+    }
+    
+    @Override
+    public Set<Student> getByGroup(String group) {
+        return studentDao.read().stream().filter(student -> group.equals(student.getGroup()))
+                .collect(toSet());
+    }
+    
+    @Override
+    public Set<Student> getByUserId(int id) {
+        return studentDao.read().stream().filter(student -> id == student.getUserId())
+                .collect(toSet());
+    }
+    
 }
