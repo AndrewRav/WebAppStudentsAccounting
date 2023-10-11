@@ -46,7 +46,7 @@
                 <form method="post" action="createUser" class="register-form" id="register-form">
                     <h2 class="active_2">Добавить пользователя</h2>
                     <input type="text" name="login" id="login" placeholder="Логин" class="text" required />
-                    <input type="password" name="pass" id="pass" placeholder="Пароль" class="text" required />
+                    <input type="password" name="password" id="password" placeholder="Пароль" class="text" required />
                     <input type="text" name="lastName" id="lastName" placeholder="Фамилию" class="text" required />
                     <input type="text" name="firstName" id="firstName" placeholder="Имя" class="text" required=""/>
                     <input type="text" name="middleName" id="middleName" placeholder="Отчество" class="text" required />
@@ -66,7 +66,7 @@
             <div class="forms-container">
                 <form method="post" action="deleteStudent" class="delete_student">
                     <h2 class="active_main_part_1">Удалить студента</h2>
-                    <input type="number" class="text" min="1" name="studentId" id="studentId" placeholder="ID студента" />
+                    <input type="number" class="text" min="1" name="id" id="id" placeholder="ID студента" />
                     <input type="submit" name="signup" id="signup" class="signin_student" value="Удалить" />
                 </form>
 
@@ -89,7 +89,7 @@
                 </form>
             </div>
         </div>
-        <form action="logout">
+        <form action="index.html">
             <input type="hidden" name="logout" value="true"/>
             <input class="signin_leave" type="submit" value="Покинуть админ-панель"/>
         </form> 

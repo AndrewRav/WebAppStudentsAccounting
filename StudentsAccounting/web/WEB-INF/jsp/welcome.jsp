@@ -34,7 +34,7 @@
         <form action="pesonalDataServlet" method="post" class="form_6">
             <input class="signin" type="submit" value="Редактирование ваших личных данных"/>
         </form>
-        <form action="logout" class="form_7">
+        <form action="index.html" class="form_7">
             <input type="hidden" name="logout" value="true"/>
             <input class="signin_leave" type="submit" value="Выйти из аккаунта"/>
         </form>
