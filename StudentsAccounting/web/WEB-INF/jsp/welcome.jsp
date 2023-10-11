@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Личный кабинет</title>
-         <style><%@include file="/resources/css/indexStyle1.css"%></style>
+        <style><%@include file="/resources/css/indexStyle1.css"%></style>
     </head>
     <body>
         <h1>Добро пожаловать, <%= session.getAttribute("name")%> <%= session.getAttribute("middleName")%>!</h1>

@@ -7,20 +7,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Информация</title>
         <style><%@include file="/resources/css/infoStyle.css"%></style>
     </head>
     <body>
         <div class="header">
-            <span class="header-title">Список всех студентов</span>
+            <span class="header-title">Список данных всех студентов</span>
             <form>
-                <a href="/WEB-INF/jsp/welcome.jsp" class="header-link">Назад</a>
+                <a href="admin.jsp" class="header-link">Назад</a>
             </form>
         </div>
         <table>
             <thead>
-            <th>id преподавателя</th>
+            <th>id</th>
+            <th>user id</th>
             <th>Фамилия</th>
             <th>Имя</th>
             <th>Отчество</th>
@@ -29,10 +30,12 @@
             <th>Факультет</th>
             <th>Курс</th>
             <th>Группа</th>
+            <th>Действие</th>
         </thead>
         <c:forEach var="ab" items="${student}">
             <tr>
-                <td>${ab.userId}</td>
+                <td>${ab.id}</td>
+                <td>${ab.user_id}</td>
                 <td>${ab.lastName}</td>
                 <td>${ab.firstName}</td>
                 <td>${ab.middleName}</td>
@@ -41,9 +44,9 @@
                 <td>${ab.faculty}</td>
                 <td>${ab.course}</td>
                 <td>${ab.group}</td>
+                <td><a href="updateStudents.jsp?id=${ab.id}">Изменить</a></td>
             </tr>
         </c:forEach>
     </table>
 </body>
 </html>
-
