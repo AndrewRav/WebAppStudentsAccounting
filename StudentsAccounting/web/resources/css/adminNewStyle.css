@@ -3,7 +3,7 @@ body {
     color: #fff;
     font-size: 14px;
     letter-spacing: 1px;
-    background-image: url(../images/dark_back.jpg);
+    background-image: url(resources/images/dark_back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
