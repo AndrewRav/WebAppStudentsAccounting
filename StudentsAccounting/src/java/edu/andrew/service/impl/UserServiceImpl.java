@@ -5,7 +5,6 @@ import edu.andrew.model.User;
 import java.util.Set;
 import edu.andrew.service.UserService;
 import static java.util.stream.Collectors.toSet;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -51,6 +50,12 @@ public class UserServiceImpl implements UserService {
     public User getById(int id) {
         return userDao.read().stream().filter(user -> id == user.getId())
                 .collect(toSet()).iterator().next();
+    }
+    
+    @Override
+    public User login(String email, String password) {
+        return userDao.read().stream().filter(user -> email.equals(user.getEmail()) && password.equals(user.getPassword()))
+                .findFirst().orElse(null);
     }
     
 }

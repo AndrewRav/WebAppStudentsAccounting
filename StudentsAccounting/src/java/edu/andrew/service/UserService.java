@@ -13,4 +13,5 @@ public interface UserService {
     boolean update(int id, String newLogin, String newPassword, String newLastName, String newFirstName, String newMiddleName, String newEmail, String newStatus);
     boolean delete(int id);
     User getById(int id);
+    User login(String email, String password);
 }
