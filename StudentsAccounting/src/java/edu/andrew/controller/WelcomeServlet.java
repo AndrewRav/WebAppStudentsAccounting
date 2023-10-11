@@ -16,6 +16,6 @@ public class WelcomeServlet extends HttpServlet implements Jumpable {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        jump("/WEB-INF/jsp/welcome.jsp", request, response);
+        jump("/WEB-INF/jsp/login.jsp", request, response);
     }
 }

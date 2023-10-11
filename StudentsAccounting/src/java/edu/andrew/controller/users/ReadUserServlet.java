@@ -22,6 +22,6 @@ public class ReadUserServlet extends InitServlet implements Jumpable {
             throws ServletException, IOException {
         Set<User> user = userService.read();
         request.setAttribute("user", user);
-        jump("/WEB-INF/jsp/show.jsp", request, response);
+        jump("/WEB-INF/jsp/infoUsersAdmin.jsp", request, response);
     }
 }
