@@ -79,7 +79,8 @@
             </div>
             <!-- Вывод данных -->
             <div class="forms-container">
-                <form action="readStudent" method="get" class="all_students">
+                <form action="readStudent" method="post" class="all_students">
+                    <input type="hidden" name="action" value="admin">
                     <h2 class="active_main_part_3">Вывод и редактирование студентов</h2>
                     <input class="signin_all_students" type="submit" value="Список данных всех студентов"/>
                 </form>

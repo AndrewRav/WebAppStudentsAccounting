@@ -10,7 +10,8 @@
     </head>
     <body>
         <h1>Добро пожаловать, <%= session.getAttribute("name")%> <%= session.getAttribute("middleName")%>!</h1>
-        <form action="readStudent" method="get" class="form_1">
+        <form action="readStudent" method="post" class="form_1">
+            <input type="hidden" name="action" value="user">
             <input class="signin" type="submit" value="Список всех студентов в системе"/>
         </form>
         <form action="studentsUserServlet" method="get" class="form_2">

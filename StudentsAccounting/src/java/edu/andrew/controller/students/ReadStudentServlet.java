@@ -18,11 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 public class ReadStudentServlet extends InitServlet implements Jumpable {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Set<Student> student = studentService.read();
+        String action = request.getParameter("action");
         request.setAttribute("student", student);
-        jump("/WEB-INF/jsp/info.jsp", request, response);
+        if (action.equals("admin")) {
+           jump("/WEB-INF/jsp/infoStudentsAdmin.jsp", request, response); 
+        } else {
+           jump("/WEB-INF/jsp/info.jsp", request, response);
+        }
     }
-    
 }

@@ -35,7 +35,7 @@
         <c:forEach var="ab" items="${student}">
             <tr>
                 <td>${ab.id}</td>
-                <td>${ab.user_id}</td>
+                <td>${ab.userId}</td>
                 <td>${ab.lastName}</td>
                 <td>${ab.firstName}</td>
                 <td>${ab.middleName}</td>
