@@ -43,7 +43,7 @@ public class StudentDao implements Dao<Student> {
                 if (affectedRows == 0) { // Если строчки не добавлены выбрасывается исключение 
                     throw new SQLException("Creating user failed, no rows affected.");
                 }
-                sql = "SELECT * FROM student ORDER BY id DESC LIMIT 1"; // Сортируем в обратном порядке записи(от максимального до минимального) в бд и получаем первую строчку
+                sql = "SELECT * FROM students ORDER BY id DESC LIMIT 1"; // Сортируем в обратном порядке записи(от максимального до минимального) в бд и получаем первую строчку
                 try (Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql)) {
                     if (rs.next()) { // Если результат имеет хотя бы 1 запись
                         id = rs.getInt("id"); // Берём id свежесозданной строчки 
