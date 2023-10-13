@@ -13,9 +13,9 @@
     </head>
     <body>
         <div class="header">
-            <span class="header-title">Список данных всех пользователей</span>
-            <form>
-                <a href="admin.jsp" class="header-link">Назад</a>
+            <span class="header-title">Список данных всех пользователей</span>  
+            <form action="transitionPage" method="post">
+                <input type="submit" value="Назад"/>
             </form>
         </div>
         <table>

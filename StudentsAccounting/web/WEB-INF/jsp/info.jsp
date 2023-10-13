@@ -14,8 +14,8 @@
     <body>
         <div class="header">
             <span class="header-title">Список всех студентов</span>
-            <form>
-                <a href="/WEB-INF/jsp/welcome.jsp" class="header-link">Назад</a>
+            <form action="transitionPage" method="post">
+                <input type="submit" value="Назад"/>
             </form>
         </div>
         <table>

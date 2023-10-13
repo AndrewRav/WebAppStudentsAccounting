@@ -19,7 +19,7 @@
     <body>
         <!-- Добро пожаловать-->
         <div class="header">
-            <h2 class="header-title">Добро пожаловать в Админ-панель системы «Факультатив», <%= session.getAttribute("name")%> <%= session.getAttribute("middleName")%></h2>
+            <h2 class="header-title">Добро пожаловать в Админ-панель системы «Факультатив», <%= session.getAttribute("firstName")%> <%= session.getAttribute("middleName")%></h2>
         </div>
         <!-- Добавление студента -->
         <div class="forms-container">
@@ -79,8 +79,8 @@
             </div>
             <!-- Вывод данных -->
             <div class="forms-container">
-                <form action="readStudent" method="post" class="all_students">
-                    <input type="hidden" name="action" value="admin">
+                <form action="readStudent" method="get" class="all_students">
+                    <input type="hidden" name="status" value="admin">
                     <h2 class="active_main_part_3">Вывод и редактирование студентов</h2>
                     <input class="signin_all_students" type="submit" value="Список данных всех студентов"/>
                 </form>

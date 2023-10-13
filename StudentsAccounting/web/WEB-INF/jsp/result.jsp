@@ -4,12 +4,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>результат запроса</title>
+        <title>Результат запроса</title>
     </head>
     <body>
         <h1>${success}</h1>
-        <form action="index.html">
-            <input type="submit" value="На главную"/>
-        </form>        
+        <form action="transitionPage" method="post">
+            <input type="submit" value="Назад"/>
+        </form>      
     </body>
 </html>
