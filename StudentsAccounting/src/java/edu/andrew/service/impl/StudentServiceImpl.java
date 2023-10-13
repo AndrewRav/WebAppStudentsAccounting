@@ -69,7 +69,7 @@ public class StudentServiceImpl implements StudentService {
 //        String month = splitBirthDate[1];
 //        String day = splitBirthDate[2];
             // Дата хранится в формате yy-mm-dd, поэтому использую первый элемент для фильтрации по году
-        return studentDao.read().stream().filter(student -> birthDate.equals(student.getBirthDate().split("-")[0]))
+        return studentDao.read().stream().filter(student -> Integer.parseInt(birthDate) <= Integer.parseInt(student.getBirthDate().split("-")[0]))
                 .collect(toSet());
     }
     
