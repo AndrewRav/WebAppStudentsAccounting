@@ -2,6 +2,7 @@ package edu.andrew.controller.users;
 
 import edu.andrew.controller.InitServlet;
 import edu.andrew.controller.Jumpable;
+import edu.andrew.model.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +19,11 @@ public class UpdateUserServlet extends InitServlet implements Jumpable {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        request.getSession(true).setAttribute("id", id);
-        jump("/WEB-INF/jsp/update.jsp", request, response);
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);
+        User user = userService.getById(id);
+        request.setAttribute("user", user);
+        jump("/WEB-INF/jsp/updateUsersAdmin.jsp", request, response);
     }
 
     @Override
@@ -34,8 +37,8 @@ public class UpdateUserServlet extends InitServlet implements Jumpable {
         String email = request.getParameter("email");
         String status = request.getParameter("status");
         
-        String stringUserID = (String) request.getSession().getAttribute("id");
-        int id = Integer.parseInt(stringUserID);
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);
         boolean success = userService.update(id, login, password, lastName, firstName, middleName, email, status);
         request.setAttribute("success", success ? "Данные обновлены" : "Данные не обновлены");
         jump("/WEB-INF/jsp/result.jsp", request, response);

@@ -40,7 +40,9 @@
                 <td>${ab.middleName}</td>
                 <td>${ab.email}</td>
                 <td>${ab.status}</td>
-                <td><a href="updateUsersAdmin.jsp?id=${ab.id}">Изменить</a></td>
+                <td><form action="updateUser" method="get">
+                        <input type="hidden" name="id" value="${ab.id}"/>
+                        <input type="submit" value="Изменить"/></form></td>
             </tr>
         </c:forEach>
     </table>

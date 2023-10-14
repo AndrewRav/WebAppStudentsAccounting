@@ -2,7 +2,6 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Редактирование данных студентов</title>
-         <style><%@include file="/resources/css/updateUserStyle.css"%></style>
+        <style><%@include file="/resources/css/updateUserStyle.css"%></style>
     </head>
     <body>
         <div class="header">
@@ -20,7 +19,7 @@
             </form>
         </div>
         <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-        <form method="post" action="updateUsersServlet">
+        <form method="post" action="updateUser">
             <table>
                 <thead>
                 <th>id</th>
@@ -32,48 +31,28 @@
                 <th>Email</th>
                 <th>Статус</th>
                 </thead>
-                <tbody>
-                    <%
-                        String idString = request.getParameter("id");
-                        int id = Integer.parseInt(idString);
-                        try {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/students?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useLegacyDatetimeCode=false", "root", "zxzx");
-                            PreparedStatement pst = con.prepareStatement("SELECT * FROM users WHERE id = ?");
-                            pst.setInt(1, id);
-                            ResultSet rs = pst.executeQuery();
-                            while (rs.next()) {
-                    %>
-                    <tr>
-                        <td><%= rs.getString(1)%></td>
-                        <td><input type="text" name="login" value="<%= rs.getString(2)%>" required></td>
-                        <td><input type="text" name="pass" value="<%= rs.getString(3)%>" required></td>
-                        <td><input type="text" name="lastName" value="<%= rs.getString(4)%>" required></td>
-                        <td><input type="text" name="firstName" value="<%= rs.getString(5)%>" required></td>
-                        <td><input type="text" name="middleName" value="<%= rs.getString(6)%>" required></td>
-                        <td><input type="text" name="email" value="<%= rs.getString(7)%>" required></td>
-                        <td><select name="status" id="status" class="status">
-                                <option value="<%= rs.getString(8)%>" hidden><%= rs.getString(8)%></option>
-                                <option value="user">user</option>
-                                <option value="admin">admin</option>
-                            </select></td>
-                        <td><input type="hidden" name="id" value="<%= rs.getString(1)%>" required></td>
-                    </tr>
-                    <%
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    %>
-                </tbody>
+                <tr>
+                    <td>${user.id}</td>
+                    <td><input type="text" name="login" value="${user.login}" required></td>
+                    <td><input type="text" name="password" value="${user.password}" required></td>
+                    <td><input type="text" name="lastName" value="${user.lastName}" required></td>
+                    <td><input type="text" name="firstName" value="${user.firstName}" required></td>
+                    <td><input type="text" name="middleName" value="${user.middleName}" required></td>
+                    <td><input type="text" name="email" value="${user.email}" required></td>
+                    <td><select name="status" id="status" class="status">
+                            <option value="${user.status}" hidden>${user.status}</option>
+                            <option value="user">user</option>
+                            <option value="admin">admin</option>
+                        </select></td>
+                </tr>
             </table>
             <div class="form-group form-button">
+                <input type="hidden" name="id" value="${user.id}"/>
                 <input type="submit" name="signup" id="signup"
                        class="form-submit" value="Обновить" />
             </div>
-
         </form>
-                
+
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="alert/dist/sweetalert.css">
 

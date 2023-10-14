@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(int id) {
         return userDao.read().stream().filter(user -> id == user.getId())
-                .collect(toSet()).iterator().next();
+                .findFirst().orElse(null);
     }
     
     @Override
