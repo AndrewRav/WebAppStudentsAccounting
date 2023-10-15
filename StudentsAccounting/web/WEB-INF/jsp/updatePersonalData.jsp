@@ -14,12 +14,12 @@
     <body>
         <div class="header">
             <span class="header-title">Редактирование личных данных</span>
-            <form>
-                <a href="index.jsp" class="header-link">Назад</a>
+            <form action="transitionPage" method="post">
+                <input class="button" type="submit" value="Назад"/>
             </form>
         </div>
         <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-        <form method="post" action="updatePersonalDataServlet">
+        <form method="post" action="updateUser">
             <table>
                 <thead>
                 <th>id</th>
@@ -31,24 +31,23 @@
                 <th>Email</th>
                 <th>Статус</th>
                 </thead>
-                <c:forEach var="ab" items="${users}">
                     <tr>
-                        <td>${ab.id}</td>
-                        <td><input type="text" name="login" value="${ab.login}" required></td>
-                        <td><input type="text" name="pass" value="${ab.password}" required></td>
-                        <td><input type="text" name="lastName" value="${ab.lasName}" required></td>
-                        <td><input type="text" name="firstName" value="${ab.firstName}" required></td>
-                        <td><input type="text" name="middleName" value="${ab.middleName}" required></td>
-                        <td><input type="text" name="email" value="${ab.email}" required></td>
-                        <td>${ab.status}</td>
+                        <td>${user.id}</td>
+                        <td><input type="text" name="login" value="${user.login}" required></td>
+                        <td><input type="text" name="password" value="${user.password}" required></td>
+                        <td><input type="text" name="lastName" value="${user.lastName}" required></td>
+                        <td><input type="text" name="firstName" value="${user.firstName}" required></td>
+                        <td><input type="text" name="middleName" value="${user.middleName}" required></td>
+                        <td><input type="text" name="email" value="${user.email}" required></td>
+                        <td>${user.status}</td>
                     </tr>
-                </c:forEach>
             </table>
             <div class="form-group form-button">
+                <input type="hidden" name="id" value="${user.id}"/>
+                <input type="hidden" name="status" value="${user.status}"/>
                 <input type="submit" name="signup" id="signup"
                        class="form-submit" value="Обновить" />
             </div>
-
         </form>
      
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

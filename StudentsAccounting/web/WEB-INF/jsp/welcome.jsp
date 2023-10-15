@@ -32,7 +32,8 @@
             <input type="text" class="text" id="group" name="group" placeholder="Например, ЭЭБ-1" required/><br/>
             <input class="signin" type="submit" value="Список учебной группы"/>
         </form>
-        <form action="pesonalDataServlet" method="post" class="form_6">
+        <form action="updateUser" method="get" class="form_6">
+            <input type="hidden" name="id" value="<%= request.getSession().getAttribute("id")%>"/>
             <input class="signin" type="submit" value="Редактирование ваших личных данных"/>
         </form>
         <form action="index.html" class="form_7">

@@ -23,7 +23,11 @@ public class UpdateUserServlet extends InitServlet implements Jumpable {
         int id = Integer.parseInt(idString);
         User user = userService.getById(id);
         request.setAttribute("user", user);
-        jump("/WEB-INF/jsp/updateUsersAdmin.jsp", request, response);
+        if (request.getSession().getAttribute("status").equals("user")) {
+         jump("/WEB-INF/jsp/updatePersonalData.jsp", request, response);   
+        } else {
+         jump("/WEB-INF/jsp/updateUsersAdmin.jsp", request, response);   
+        }
     }
 
     @Override

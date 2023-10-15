@@ -14,7 +14,7 @@
     <body>
         <div class="header">
             <span class="header-title">Редактирование данных преподавателей</span>
-            <form action="usersServlet" method="post">
+            <form action="transitionPage" method="post">
                 <input class="button" type="submit" value="Назад"/>
             </form>
         </div>
