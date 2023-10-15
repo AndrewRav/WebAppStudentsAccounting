@@ -2,6 +2,7 @@ package edu.andrew.controller.students;
 
 import edu.andrew.controller.InitServlet;
 import edu.andrew.controller.Jumpable;
+import edu.andrew.model.Student;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +19,11 @@ public class UpdateStudentServlet extends InitServlet implements Jumpable {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        request.getSession(true).setAttribute("id", id);
-        jump("/WEB-INF/jsp/update.jsp", request, response);
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);
+        Student student = studentService.getById(id);
+        request.setAttribute("student", student);
+        jump("/WEB-INF/jsp/updateStudents.jsp", request, response);
     }
 
     @Override
@@ -38,8 +41,8 @@ public class UpdateStudentServlet extends InitServlet implements Jumpable {
         int course = Integer.parseInt(stringCourse);
         String groupName = request.getParameter("groupName");
         
-        String stringStudentID = (String) request.getSession().getAttribute("id");
-        int id = Integer.parseInt(stringStudentID);
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);;
         boolean success = studentService.update(id, userID, lastName, firstName, middleName, birthDate, phoneNumber, faculty, course, groupName);
         request.setAttribute("success", success ? "Данные обновлены" : "Данные не обновлены");
         jump("/WEB-INF/jsp/result.jsp", request, response);

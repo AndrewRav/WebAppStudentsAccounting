@@ -15,12 +15,12 @@
     <body>
         <div class="header">
             <span class="header-title">Редактирование данных студентов</span>
-            <form action="allStudentsServlet" method="post">
-                <input class="button" type="submit" value="Назад"/>
+            <form action="transitionPage" method="post">
+                <input type="submit" value="Назад"/>
             </form>
         </div>
         <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-        <form method="post" action="updateStudentsServlet">
+        <form method="post" action="updateStudent">
             <table>
                 <thead>
                 <th>user_id</th>
@@ -34,38 +34,21 @@
                 <th>Группа</th>
                 </thead>
                 <tbody>
-                    <%
-                        String idString = request.getParameter("id");
-                        int id = Integer.parseInt(idString);
-                        try {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/students?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useLegacyDatetimeCode=false", "root", "zxzx");
-                            PreparedStatement pst = con.prepareStatement("SELECT * FROM students WHERE id =?");
-                            pst.setInt(1, id);
-                            ResultSet rs = pst.executeQuery();
-                            while (rs.next()) {
-                    %>
                     <tr>
-                        <td><input type="number" name="userID" value="<%= rs.getString(2)%>" required></td>
-                        <td><input type="text" name="lastName" value="<%= rs.getString(3)%>" required></td>
-                        <td><input type="text" name="firstName" value="<%= rs.getString(4)%>" required></td>
-                        <td><input type="text" name="middleName" value="<%= rs.getString(5)%>" required></td>
-                        <td><input type="text" name="birthDate" value="<%= rs.getString(6)%>" required></td>
-                        <td><input type="text" name="phoneNumber" value="<%= rs.getString(7)%>" required></td>
-                        <td><input type="text" name="faculty" value="<%= rs.getString(8)%>" required></td>
-                        <td><input type="number" min="0" name="course" value="<%= rs.getString(9)%>" required></td>
-                        <td><input type="text" name="groupName" value="<%= rs.getString(10)%>" required></td>
-                            <td><input type="hidden" name="id" value="<%= rs.getString(1)%>" required></td>
+                        <td><input type="number" name="userID" value="${student.userId}" required></td>
+                        <td><input type="text" name="lastName" value="${student.lastName}" required></td>
+                        <td><input type="text" name="firstName" value="${student.firstName}" required></td>
+                        <td><input type="text" name="middleName" value="${student.middleName}" required></td>
+                        <td><input type="text" name="birthDate" value="${student.birthDate}" required></td>
+                        <td><input type="text" name="phoneNumber" value="${student.phoneNumber}" required></td>
+                        <td><input type="text" name="faculty" value="${student.faculty}" required></td>
+                        <td><input type="number" min="0" name="course" value="${student.course}" required></td>
+                        <td><input type="text" name="groupName" value="${student.group}" required></td>
                     </tr>
-                    <%
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    %>
                 </tbody>
             </table>
             <div class="form-group form-button">
+                <input type="hidden" name="id" value="${student.id}">
                 <input type="submit" name="signup" id="signup"
                        class="form-submit" value="Обновить" />
             </div>

@@ -44,7 +44,9 @@
                 <td>${ab.faculty}</td>
                 <td>${ab.course}</td>
                 <td>${ab.group}</td>
-                <td><a href="updateStudents.jsp?id=${ab.id}">Изменить</a></td>
+                <td><form action="updateStudent" method="get">
+                        <input type="hidden" name="id" value="${ab.id}"/>
+                        <input type="submit" value="Изменить"/></form></td>
             </tr>
         </c:forEach>
     </table>
