@@ -17,4 +17,6 @@ public interface StudentService {
     Set<Student> getByBirthDate(String birthDate);
     Set<Student> getByGroup(String group);
     Set<Student> getByUserId(int userId);
+    Set<String> getUniqueFaculties();
+    Set<String> getUniqueGroup();
 }

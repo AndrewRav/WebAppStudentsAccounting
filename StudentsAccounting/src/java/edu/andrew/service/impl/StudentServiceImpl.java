@@ -12,12 +12,13 @@ import static java.util.stream.Collectors.toSet;
  * @author Andrew
  */
 public class StudentServiceImpl implements StudentService {
+
     Dao<Student> studentDao;
 
     public StudentServiceImpl(Dao studentDao) {
         this.studentDao = studentDao;
     }
-    
+
     @Override
     public boolean create(Student student) {
         return studentDao.create(student) > 0;
@@ -54,13 +55,13 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.read().stream().filter(student -> id == student.getId())
                 .collect(toSet()).iterator().next();
     }
-    
+
     @Override
     public Set<Student> getByFaculty(String faculty) {
         return studentDao.read().stream().filter(student -> faculty.equals(student.getFaculty()))
                 .collect(toSet());
     }
-    
+
     @Override
     public Set<Student> getByBirthDate(String birthDate) {
 //        Student student = new Student();
@@ -68,21 +69,39 @@ public class StudentServiceImpl implements StudentService {
 //        String year = splitBirthDate[0];
 //        String month = splitBirthDate[1];
 //        String day = splitBirthDate[2];
-            // Дата хранится в формате yy-mm-dd, поэтому использую первый элемент для фильтрации по году
+        // Дата хранится в формате yy-mm-dd, поэтому использую первый элемент для фильтрации по году
         return studentDao.read().stream().filter(student -> Integer.parseInt(birthDate) <= Integer.parseInt(student.getBirthDate().split("-")[0]))
                 .collect(toSet());
     }
-    
+
     @Override
     public Set<Student> getByGroup(String group) {
         return studentDao.read().stream().filter(student -> group.equals(student.getGroup()))
                 .collect(toSet());
     }
-    
+
     @Override
     public Set<Student> getByUserId(int id) {
         return studentDao.read().stream().filter(student -> id == student.getUserId())
                 .collect(toSet());
     }
+
+    @Override
+    public Set<String> getUniqueFaculties() {
+        return studentDao.read()
+                .stream()
+                .map(Student::getFaculty) // Извлекаем факультеты студентов
+                .distinct() // Удаляем дубликаты
+                .collect(toSet()); // Преобразуем в Set и возвращаем
+    }
     
+    @Override
+    public Set<String> getUniqueGroup() {
+        return studentDao.read()
+                .stream()
+                .map(Student::getGroup) // Извлекаем группы студентов
+                .distinct() // Удаляем дубликаты
+                .collect(toSet()); // Преобразуем в Set и возвращаем
+    }
+
 }

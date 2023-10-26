@@ -1,7 +1,10 @@
 package edu.andrew.controller;
 
+import edu.andrew.model.Student;
 import edu.andrew.model.User;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +25,17 @@ public class LoginServlet extends InitServlet implements Jumpable {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User authorizedUser = userService.login(email, password);
+        Set<String> faculties = studentService.getUniqueFaculties();
+        Set<String> groups = studentService.getUniqueGroup();
+        session.setAttribute("faculties", faculties);
+        session.setAttribute("groups", groups);
         
         if (authorizedUser != null) {
             session.setAttribute("firstName", authorizedUser.getFirstName());
             session.setAttribute("middleName", authorizedUser.getMiddleName());
             session.setAttribute("status", authorizedUser.getStatus());
             session.setAttribute("id", authorizedUser.getId());
-            
+
             if (authorizedUser.getStatus().equals("user")) {
                 jump("/WEB-INF/jsp/welcome.jsp", request, response);
             } else {
