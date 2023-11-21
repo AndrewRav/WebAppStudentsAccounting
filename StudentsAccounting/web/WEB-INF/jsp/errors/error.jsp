@@ -21,7 +21,7 @@
             </h2>
             <h3>
                 <fmt:message key = "error.name">
-                    <fmt:param value="${pageContext.exception.getClass().getName()}"/>
+                    <fmt:param value="${pageContext.exception.getClass().getFirstName()}"/>
                     <fmt:param value="${pageContext.errorData.requestURI}"/>
                 </fmt:message>                 
             </h3> 
