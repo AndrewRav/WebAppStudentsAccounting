@@ -8,14 +8,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Редактирование данных студентов</title>
+        <title><fmt:message key="edit.profile.button" /></title>
         <style><%@include file="/resources/css/infoStyle.css"%></style>
     </head>
     <body>
         <div class="header">
-            <span class="header-title">Редактирование личных данных</span>
+            <span class="header-title"><fmt:message key="edit.profile.button" /></span>
             <form action="transitionPage" method="post">
-                <input class="button" type="submit" value="Назад"/>
+                <input class="button" type="submit" value='<fmt:message key="button.back" />'/>
             </form>
         </div>
         <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
@@ -23,13 +23,13 @@
             <table>
                 <thead>
                 <th>id</th>
-                <th>Логин</th>
-                <th>Пароль</th>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
+                <th><fmt:message key="th.user.login" /></th>
+                <th><fmt:message key="th.user.password" /></th>
+                <th><fmt:message key="th.user.lastname" /></th>
+                <th><fmt:message key="th.user.firstname" /></th>
+                <th><fmt:message key="th.user.middlename" /></th>
                 <th>Email</th>
-                <th>Статус</th>
+                <th><fmt:message key="th.user.status" /></th>
                 </thead>
                     <tr>
                         <td>${user.id}</td>
@@ -46,7 +46,7 @@
                 <input type="hidden" name="id" value="${user.id}"/>
                 <input type="hidden" name="status" value="${user.status}"/>
                 <input type="submit" name="signup" id="signup"
-                       class="form-submit" value="Обновить" />
+                       class="form-submit" value='<fmt:message key="update" />' />
             </div>
         </form>
      

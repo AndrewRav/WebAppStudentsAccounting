@@ -15,7 +15,7 @@
         </head>
         <body>
             <div class="header">
-                <span class="header-title"><fmt:message key="list.all.students" /></span>
+                <span class="header-title"><fmt:message key="all.students.info" /></span>
                 <form action="transitionPage" method="post">
                     <input type="submit" value='<fmt:message key="button.back" />'/>
                 </form>
@@ -48,7 +48,7 @@
                         <td>${ab.group}</td>
                         <td><form action="updateStudent" method="get">
                                 <input type="hidden" name="id" value="${ab.id}"/>
-                                <input type="submit" value="Изменить"/></form></td>
+                                <input type="submit" value='<fmt:message key="edit" />'/></form></td>
                     </tr>
                 </c:forEach>
             </table>

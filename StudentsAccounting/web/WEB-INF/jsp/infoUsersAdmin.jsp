@@ -6,48 +6,48 @@
 <html>
     <fmt:setLocale value='${pageContext.response.locale}' scope="session"/>
     <fmt:bundle basename="edu.andrew.localization.messages.msg">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title><fmt:message key="info.page.title" /></title>
-        <style><%@include file="/resources/css/infoStyle.css"%></style>
-    </head>
-    <body>
-        <div class="header">
-            <span class="header-title">Список данных всех пользователей</span>  
-            <form action="transitionPage" method="post">
-                <input type="submit" value="Назад"/>
-            </form>
-        </div>
-        <table>
-            <thead>
-            <th>id</th>
-            <th>Логин</th>
-            <th>Пароль</th>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Email</th>
-            <th>Статус</th>
-            <th>Действие</th>
-        </thead>
-        <c:forEach var="ab" items="${user}">
-            <tr>
-                <td>${ab.id}</td>
-                <td>${ab.login}</td>
-                <td>${ab.password}</td>
-                <td>${ab.lastName}</td>
-                <td>${ab.firstName}</td>
-                <td>${ab.middleName}</td>
-                <td>${ab.email}</td>
-                <td>${ab.status}</td>
-                <td><form action="updateUser" method="get">
-                        <input type="hidden" name="id" value="${ab.id}"/>
-                        <input type="submit" value="Изменить"/></form></td>
-            </tr>
-        </c:forEach>
-    </table>
-</body>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title><fmt:message key="info.page.title" /></title>
+            <style><%@include file="/resources/css/infoStyle.css"%></style>
+        </head>
+        <body>
+            <div class="header">
+                <span class="header-title"><fmt:message key="all.users.info" /></span>  
+                    <form action="transitionPage" method="post">
+                        <input type="submit" value='<fmt:message key="button.back" />'/>
+                    </form>
+                </div>
+                <table>
+                    <thead>
+                    <th>id</th>
+                    <th><fmt:message key="th.user.login" /></th>
+                    <th><fmt:message key="th.user.password" /></th>
+                    <th><fmt:message key="th.user.lastname" /></th>
+                    <th><fmt:message key="th.user.firstname" /></th>
+                    <th><fmt:message key="th.user.middlename" /></th>
+                    <th>Email</th>
+                    <th><fmt:message key="th.user.status" /></th>
+                    <th><fmt:message key="th.action" /></th>
+                </thead>
+                <c:forEach var="ab" items="${user}">
+                    <tr>
+                        <td>${ab.id}</td>
+                        <td>${ab.login}</td>
+                        <td>${ab.password}</td>
+                        <td>${ab.lastName}</td>
+                        <td>${ab.firstName}</td>
+                        <td>${ab.middleName}</td>
+                        <td>${ab.email}</td>
+                        <td>${ab.status}</td>
+                        <td><form action="updateUser" method="get">
+                                <input type="hidden" name="id" value="${ab.id}"/>
+                                <input type="submit" value='<fmt:message key="edit" />'/></form></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </body>
 </fmt:bundle>
 </html>

@@ -9,29 +9,29 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Редактирование данных студентов</title>
+        <title><fmt:message key="update.students"></title>
         <style><%@include file="/resources/css/updateStudentStyle.css"%></style>
     </head>
     <body>
         <div class="header">
-            <span class="header-title">Редактирование данных студентов</span>
+            <span class="header-title"><fmt:message key="update.students"></span>
             <form action="transitionPage" method="post">
-                <input type="submit" value="Назад"/>
+                <input type="submit" value='<fmt:message key="button.back" />'/>
             </form>
         </div>
         <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
         <form method="post" action="updateStudent">
             <table>
                 <thead>
-                <th>user_id</th>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
-                <th>Дата рождения</th>
-                <th>Телефон</th>
-                <th>Факультет</th>
-                <th>Курс</th>
-                <th>Группа</th>
+                <th><fmt:message key="th.userid" /></th>
+                <th><fmt:message key="th.lastname" /></th>
+                <th><fmt:message key="th.firstname" /></th>
+                <th><fmt:message key="th.middlename" /></th>
+                <th><fmt:message key="th.birthdate" /></th>
+                <th><fmt:message key="th.phonenumber" /></th>
+                <th><fmt:message key="th.faculty" /></th>
+                <th><fmt:message key="th.course" /></th>
+                <th><fmt:message key="th.group" /></th>
                 </thead>
                 <tbody>
                     <tr>
@@ -50,7 +50,7 @@
             <div class="form-group form-button">
                 <input type="hidden" name="id" value="${student.id}">
                 <input type="submit" name="signup" id="signup"
-                       class="form-submit" value="Обновить" />
+                       class="form-submit" value='<fmt:message key="update" />' />
             </div>
         </form>   
 
