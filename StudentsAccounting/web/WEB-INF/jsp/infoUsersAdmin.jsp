@@ -49,4 +49,5 @@
         </c:forEach>
     </table>
 </body>
+</fmt:bundle>
 </html>

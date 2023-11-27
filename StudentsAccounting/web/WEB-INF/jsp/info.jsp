@@ -17,7 +17,7 @@
             <div class="header">
                 <span class="header-title"><fmt:message key="list.all.students" /></span>
                 <form action="transitionPage" method="post">
-                    <input type="submit" value="Назад"/>
+                    <input type="submit" value='<fmt:message key="button.back" />'/>
                 </form>
             </div>
             <table>
