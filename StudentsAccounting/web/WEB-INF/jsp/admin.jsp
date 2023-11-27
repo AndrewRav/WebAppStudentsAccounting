@@ -5,7 +5,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+    <fmt:setLocale value='${pageContext.response.locale}' scope="session"/>
+    <fmt:bundle basename="edu.andrew.localization.messages.msg">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport"
@@ -55,7 +56,7 @@
                     <input type="text" name="middleName" id="middleName" placeholder='<fmt:message key="th.user.middlename" />' class="text" required />
                     <input type="email" name="email" id="email" placeholder="Email" class="text" required />
                     <select name="status" id="status" class="text_select" required>
-                        <option value="" disabled selected hidden>Выберите статус</option>
+                        <option value="" disabled selected hidden><fmt:message key="select.status" /></option>
                         <option value="user"><fmt:message key="status.user" /></option>
                         <option value="admin"><fmt:message key="status.admin" /></option>
                     </select>
@@ -95,7 +96,7 @@
         </div>
         <form action="index.html">
             <input type="hidden" name="logout" value="true"/>
-            <input class="signin_leave" type="submit" value="Покинуть админ-панель"/>
+            <input class="signin_leave" type="submit" value='<fmt:message key="logout.admin.button" />'/>
         </form> 
                 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -110,5 +111,6 @@
             }
         </script>
     </body>
+    </fmt:bundle>
 </html>
 

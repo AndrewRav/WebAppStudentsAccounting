@@ -3,18 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.sql.*"%>
-<!DOCTYPE html>
+
 <html>
+    <fmt:setLocale value='${pageContext.response.locale}' scope="session"/>
+    <fmt:bundle basename="edu.andrew.localization.messages.msg">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title><fmt:message key="update.students"></title>
+        <title><fmt:message key="update.students" /></title>
         <style><%@include file="/resources/css/updateStudentStyle.css"%></style>
     </head>
     <body>
         <div class="header">
-            <span class="header-title"><fmt:message key="update.students"></span>
+            <span class="header-title"><fmt:message key="update.students" /></span>
             <form action="transitionPage" method="post">
                 <input type="submit" value='<fmt:message key="button.back" />'/>
             </form>
@@ -66,4 +68,5 @@
             }
         </script>
     </body>
+    </fmt:bundle>
 </html>
