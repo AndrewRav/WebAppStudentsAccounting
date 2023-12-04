@@ -37,7 +37,7 @@
                     <input type="text" name="firstName" id="firstName" placeholder='<fmt:message key="th.firstname" />' class="text" required />
                     <input type="text" name="middleName" id="middleName" placeholder='<fmt:message key="th.middlename" />' class="text" required />
                     <input type="date" name="birthDate" id="birthDate" placeholder='<fmt:message key="th.birthdate" />' class="text" required />
-                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder='<fmt:message key="th.phonenumber" />' class="text" required />
+                    <input type="text" name="phoneNumber" id="phoneNumber" value="+375 " placeholder='<fmt:message key="th.phonenumber" />' class="text" required />
                     <input type="text" name="faculty" id="faculty" placeholder='<fmt:message key="th.faculty" />' class="text" required />
                     <input type="number" min="0" name="course" id="course" placeholder='<fmt:message key="th.course" />' class="text" required />
                     <input type="text" name="groupName" id="groupName" placeholder='<fmt:message key="th.group" />' class="text" required />            
@@ -104,14 +104,22 @@
                 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="alert/dist/sweetalert.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        
         <script type="text/javascript">
             var status = document.getElementById("status").value;
-            if (status == "success") {
+            if (status === "success") {
                 swal("Поздравляем!", "Операция прошла успешно!", "success");
-            } else if (status == "failed") {
+            } else if (status === "failed") {
                 swal("Извините", "Кажется, вы ввели неверные данные", "warning");
             }
+        </script>
+            
+        <script>
+            $(document).ready(function(){
+                $('#phoneNumber').mask('+375 (00) 000-00-00');
+            });
         </script>
     </body>
     </fmt:bundle>

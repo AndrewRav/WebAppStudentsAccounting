@@ -55,7 +55,13 @@ public class CreateUserServlet extends InitServlet implements Jumpable {
         user.setEmail(email);
         user.setStatus(status);
         boolean success = userService.create(user);
-        request.setAttribute("success", success ? "Данные добавлены" : "Данные не добавлены");
-        jump("/WEB-INF/jsp/result.jsp", request, response);
+        // request.setAttribute("success", success ? "Данные добавлены" : "Данные не добавлены");
+        // jump("/WEB-INF/jsp/result.jsp", request, response);
+        if (success == true) {
+            request.setAttribute("status", "success");
+        } else {
+            request.setAttribute("status", "failed");
+        }
+        jump("/WEB-INF/jsp/admin.jsp", request, response);
     }
 }

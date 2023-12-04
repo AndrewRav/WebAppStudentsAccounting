@@ -48,8 +48,14 @@ public class CreateStudentServlet extends InitServlet implements Jumpable {
         student.setCourse(course);
         student.setGroup(groupName);
         boolean success = studentService.create(student);
-        request.setAttribute("success", success ? "Данные добавлены" : "Данные не добавлены");
-        jump("/WEB-INF/jsp/result.jsp", request, response);
+        // request.setAttribute("success", success ? "Данные добавлены" : "Данные не добавлены");
+        // jump("/WEB-INF/jsp/result.jsp", request, response);
+        if (success == true) {
+            request.setAttribute("status", "success");
+        } else {
+            request.setAttribute("status", "failed");
+        }
+        jump("/WEB-INF/jsp/admin.jsp", request, response);
     }
 
 }

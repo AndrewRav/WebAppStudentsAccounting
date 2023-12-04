@@ -42,9 +42,15 @@ public class UpdateStudentServlet extends InitServlet implements Jumpable {
         String groupName = request.getParameter("groupName");
         
         String idString = request.getParameter("id");
-        int id = Integer.parseInt(idString);;
+        int id = Integer.parseInt(idString);
         boolean success = studentService.update(id, userID, lastName, firstName, middleName, birthDate, phoneNumber, faculty, course, groupName);
-        request.setAttribute("success", success ? "Данные обновлены" : "Данные не обновлены");
-        jump("/WEB-INF/jsp/result.jsp", request, response);
+        // request.setAttribute("success", success ? "Данные обновлены" : "Данные не обновлены");
+        // jump("/WEB-INF/jsp/result.jsp", request, response);
+        if (success == true) {
+            request.setAttribute("status", "success");
+        } else {
+            request.setAttribute("status", "failed");
+        }
+        doGet(request, response);
     }
 }

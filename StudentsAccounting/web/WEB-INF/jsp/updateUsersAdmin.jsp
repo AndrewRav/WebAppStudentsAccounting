@@ -16,7 +16,7 @@
     <body>
         <div class="header">
             <span class="header-title"><fmt:message key="update.users" /></span>
-            <form action="transitionPage" method="post">
+            <form action="readUser" method="get">
                 <input class="button" type="submit" value='<fmt:message key="button.back" />'/>
             </form>
         </div>
@@ -60,9 +60,9 @@
 
         <script type="text/javascript">
             var status = document.getElementById("status").value;
-            if (status == "success") {
+            if (status === "success") {
                 swal("Поздравляю", "Данные успешно обновлены", "success");
-            } else if (status == "failed") {
+            } else if (status === "failed") {
                 swal("Ошибка!", "Неверный ввод данных", "error");
             }
         </script>
