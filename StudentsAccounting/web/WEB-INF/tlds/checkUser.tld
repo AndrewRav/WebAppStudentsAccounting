@@ -5,9 +5,9 @@
     <uri>/WEB-INF/tlds/checkUser</uri>
     <function>
         <name>getUserErrors</name>
-        <function-class>errors.UserValidationError</function-class>
+        <function-class>edu.andrew.errors.UserValidationError</function-class>
         <function-signature>
-            errors.UserValidationError getUserErrors(errors.UserValidationError)
+            edu.andrew.errors.UserValidationError getUserErrors(edu.andrew.errors.UserValidationError)
         </function-signature>
     </function>
 </taglib>

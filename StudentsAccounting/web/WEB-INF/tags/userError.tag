@@ -7,7 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:if test="${result != null}">
-    <fmt:bundle basename="localization.messages.msg">
+    <fmt:bundle basename="edu.andrew.localization.messages.msg">
         <c:set var="errors" value="${f:getUserErrors(result)}" />
         <c:choose>
             <c:when test="${fn:length(errors.errorList) > 0}">

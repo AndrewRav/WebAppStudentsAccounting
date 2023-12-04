@@ -2,8 +2,11 @@ package edu.andrew.controller.users;
 
 import edu.andrew.controller.InitServlet;
 import edu.andrew.controller.Jumpable;
+import edu.andrew.errors.UserValidationError;
 import edu.andrew.model.User;
+import edu.andrew.validator.UserValidator;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +35,16 @@ public class CreateUserServlet extends InitServlet implements Jumpable {
         String middleName = request.getParameter("middleName");
         String email = request.getParameter("email");
         String status = request.getParameter("status");
+        
+        UserValidationError errors = new UserValidationError();
+        UserValidator.validate(login, password, errors);
+        RequestDispatcher rd;
+        if (!errors.getErrorList().isEmpty()) {
+            request.setAttribute("result", errors);
+            rd = getServletContext().getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
+            rd.forward(request, response);
+            return;
+        }
 
         User user = new User(); // mapping таблицы в объект 
     	user.setLogin(login);

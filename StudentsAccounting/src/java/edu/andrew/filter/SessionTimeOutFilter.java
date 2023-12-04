@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andrew
  */
-@WebFilter(urlPatterns = {"/updateUser", "/updateStudent"})
+@WebFilter(urlPatterns = {"/*"})
 public class SessionTimeOutFilter implements Filter {
 
     @Override
@@ -34,7 +34,6 @@ public class SessionTimeOutFilter implements Filter {
             if (session != null) {
                 session.invalidate();
             }
-
             req.getRequestDispatcher("/WEB-INF/jsp/timeout.jsp").forward(req, resp);
         }
     }

@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix = "err" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +62,8 @@
                         <option value="admin"><fmt:message key="status.admin" /></option>
                     </select>
                     <br>
+                    <br>
+                    <err:userError />
                     <input type="submit" name="signup" id="signup" class="signin_reg" value='<fmt:message key="button.add" />' />
                 </form>
             </div>
