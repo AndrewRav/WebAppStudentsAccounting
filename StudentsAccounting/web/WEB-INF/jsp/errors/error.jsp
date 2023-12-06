@@ -29,7 +29,7 @@
                     </fmt:message>                 
                 </h3>  
                 <form action="index.html">
-                    <input type="submit" value="<fmt:message key = "to.main"/>"/>
+                    <input type="submit" value='<fmt:message key = "to.main"/>'/>
                 </form>
             </div>         
         </body>

@@ -109,82 +109,83 @@
 
             <script>
                 document.getElementById('delete_student').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    Swal.fire({
-                        title: "<fmt:message key="alert.delete.first.title" />",
-                        text: "<fmt:message key="alert.delete.first.text" />",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        cancelButtonText: "<fmt:message key="alert.cancel" />",
-                        confirmButtonText: "<fmt:message key="alert.delete.first.button" />"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            var status = document.getElementById("status").value;
-                            if (status === "success") {
-                                Swal.fire({
-                                    icon: "success",
-                                    title: "<fmt:message key="alert.delete.result.title" />",
-                                    text: "<fmt:message key="alert.delete.result.student.text" />"
-                                    document.getElementById('delete_student_form').submit();
-                                });
-                            } else if (status === "failed") {
-                                Swal.fire({
-                                    icon: "warning",
-                                    title: "<fmt:message key="alert.warning.title" />",
-                                    text: "<fmt:message key="alert.warning.text" />"
-                                });
-                            }
-                        }
-                    });
+    e.preventDefault();
+    Swal.fire({
+        title: "<fmt:message key='alert.delete.first.title' />",
+        text: "<fmt:message key='alert.delete.first.text' />",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "<fmt:message key='alert.cancel' />",
+        confirmButtonText: "<fmt:message key='alert.delete.first.button' />"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var status = document.getElementById("status").value;
+            if (status === "success") {
+                Swal.fire({
+                    icon: "success",
+                    title: "<fmt:message key='alert.delete.result.title' />",
+                    text: "<fmt:message key='alert.delete.result.student.text' />"
                 });
+                document.getElementById('delete_student_form').submit();
+            } else if (status === "failed") {
+                Swal.fire({
+                    icon: "warning",
+                    title: "<fmt:message key='alert.warning.title' />",
+                    text: "<fmt:message key='alert.warning.text' />"
+                });
+            }
+        }
+    });
+});
 
-                document.getElementById('delete_user').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    Swal.fire({
-                        title: "<fmt:message key="alert.delete.first.title" />",
-                        text: "<fmt:message key="alert.delete.first.text" />",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        cancelButtonText: "<fmt:message key="alert.cancel" />",
-                        confirmButtonText: "<fmt:message key="alert.delete.first.button" />"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            var status = document.getElementById("status").value;
-                            if (status === "success") {
-                                Swal.fire({
-                                    icon: "success",
-                                    title: "<fmt:message key="alert.delete.result.title" />",
-                                    text: "<fmt:message key="alert.delete.result.user.text" />"
-                                    document.getElementById('delete_user_form').submit();
-                                });
-                            } else if (status === "failed") {
-                                Swal.fire({
-                                    icon: "warning",
-                                    title: "<fmt:message key="alert.warning.title" />",
-                                    text: "<fmt:message key="alert.warning.text" />"
-                                });
-                            }
-                        }
-                    });
+document.getElementById('delete_user').addEventListener('click', function (e) {
+    e.preventDefault();
+    Swal.fire({
+        title: "<fmt:message key='alert.delete.first.title' />",
+        text: "<fmt:message key='alert.delete.first.text' />",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "<fmt:message key='alert.cancel' />",
+        confirmButtonText: "<fmt:message key='alert.delete.first.button' />"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete_user_form').submit();
+            var status = document.getElementById("status").value;
+            if (status === "success") {
+                Swal.fire({
+                    icon: "success",
+                    title: "<fmt:message key='alert.delete.result.title' />",
+                    text: "<fmt:message key='alert.delete.result.user.text' />"
                 });
+            } else if (status === "failed") {
+                Swal.fire({
+                    icon: "warning",
+                    title: "<fmt:message key='alert.warning.title' />",
+                    text: "<fmt:message key='alert.warning.text' />"
+                });
+            }
+        }
+    });
+});
+
             </script>
-                 <script type="text/javascript">
+            <script type="text/javascript">
                 var status = document.getElementById("status").value;
                 if (status === "success") {
                     Swal.fire({
                         icon: "success",
-                        title: "<fmt:message key="alert.success.title" />",
-                        text: "<fmt:message key="alert.success.text" />"
+                             title: "<fmt:message key="alert.success.title" />",
+                             text: "<fmt:message key="alert.success.text" />"
                     });
                 } else if (status === "failed") {
                     Swal.fire({
                         icon: "warning",
-                        title: "<fmt:message key="alert.warning.title" />",
-                        text: "<fmt:message key="alert.warning.text" />"
+                             title: "<fmt:message key="alert.warning.title" />",
+                             text: "<fmt:message key="alert.warning.text" />"
                     });
                 }
             </script>

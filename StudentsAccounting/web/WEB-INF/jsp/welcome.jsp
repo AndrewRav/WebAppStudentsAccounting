@@ -26,11 +26,13 @@
             </form>
             <form id="facultyForm" action="facultyServlet" method="get" class="form_3">
                 <label for="faculty"><fmt:message key="enter.faculty.label" /></label>
-                <select name="faculty" id="faculty" class="text">
+                <select name="faculty" id="faculty" class="text" required>
+                   <option value="" disabled selected hidden>Введите</option>
                     <c:forEach var="faculty" items="${faculties}">
                         <option value="${faculty}">${faculty}</option>
                     </c:forEach>
                 </select>
+ 
                 <input class="signin" type="submit" value='<fmt:message key="enter.faculty.button" />'/>
             </form>
             <form action="birthDateServlet" method="get" class="form_4">
