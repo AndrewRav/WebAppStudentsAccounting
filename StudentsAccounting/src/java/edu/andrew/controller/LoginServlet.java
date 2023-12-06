@@ -29,6 +29,7 @@ public class LoginServlet extends InitServlet implements Jumpable {
         Set<String> groups = studentService.getUniqueGroup();
         session.setAttribute("faculties", faculties);
         session.setAttribute("groups", groups);
+        session.setAttribute("deleteStatus", "asd");
         
         if (authorizedUser != null) {
             session.setAttribute("firstName", authorizedUser.getFirstName());

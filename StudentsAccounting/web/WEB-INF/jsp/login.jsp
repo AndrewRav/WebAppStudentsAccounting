@@ -51,7 +51,7 @@
 
             <script type="text/javascript">
                 var status = document.getElementById("status").value;
-                if (status == "failed") {
+                if (status === "failed") {
                     swal("Извините", "Кажется, вы ввели неверные данные", "warning");
                 }
             </script>

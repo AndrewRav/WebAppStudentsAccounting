@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andrew
  */
-@WebFilter(urlPatterns = {"/*"})
+@WebFilter(urlPatterns = {"/updateUser", "/updateStudent"})
 public class SessionTimeOutFilter implements Filter {
 
     @Override

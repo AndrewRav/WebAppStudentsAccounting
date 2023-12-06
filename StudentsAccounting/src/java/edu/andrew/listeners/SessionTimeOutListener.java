@@ -15,7 +15,7 @@ public class SessionTimeOutListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent event) {
         HttpSession session = event.getSession();
-        int timeout = 1;
+        int timeout = 100;
         session.setMaxInactiveInterval(timeout);
     }
 
